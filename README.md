@@ -1,3 +1,3 @@
 # LeetCode
 
-A description of this package.
+The code for LeetCode problems.
