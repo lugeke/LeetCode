@@ -18,7 +18,6 @@ func solveSudoku(_ board: inout [[Character]]) {
         var valuesToFill: Set<Character> = ["1" as Character, "2", "3", "4", "5" ,"6", "7", "8", "9"]
         var count: Int { valuesToFill.count }
         
-        
         mutating func process(point: Point, value: Character) {
             if value != "." {
                 valuesToFill.remove(value)
@@ -30,13 +29,11 @@ func solveSudoku(_ board: inout [[Character]]) {
         mutating func fill(point: Point, value: Character) {
             emptyPoints.remove(point)
             valuesToFill.remove(value)
-            assert(emptyPoints.count == valuesToFill.count)
         }
         
         mutating func empty(point: Point, originalValue: Character) {
             emptyPoints.insert(point)
             valuesToFill.insert(originalValue)
-            assert(emptyPoints.count == valuesToFill.count)
         }
     }
     
@@ -97,33 +94,33 @@ func solveSudoku(_ board: inout [[Character]]) {
         let p = (emptyRows + emptyCols + emptyGrids).min{
             if $0.count == 0 { return false }
             else if $1.count == 0 { return true }
-            else  { return $0.count < $1.count }
+            else { return $0.count < $1.count }
         }!
         
         if p.count > 0 {
             var valuesToFill = Array(p.valuesToFill)
-            let points = Array(p.emptyPoints)
+            let points = p.emptyPoints
             outer: for _ in 1...p.count.factorial {
                 valuesToFill.nextPermutations()
-                for j in 0..<p.count {
-                    if !isValid(points[j].i, j: points[j].j, val: valuesToFill[j]) {
+                for (point, value) in zip(points, valuesToFill) {
+                    if !isValid(point.i, j: point.j, val: value) {
                         continue outer
                     }
                 }
                 // fill value
-                for j in 0..<p.count {
-                    board[points[j].i][points[j].j] = valuesToFill[j]
-                    emptyRows[points[j].i].fill(point: points[j], value: valuesToFill[j])
-                    emptyCols[points[j].j].fill(point: points[j], value: valuesToFill[j])
-                    emptyGrids[points[j].i/3*3+points[j].j/3].fill(point: points[j], value: valuesToFill[j])
+                for (point, value) in zip(points, valuesToFill) {
+                    board[point.i][point.j] = value
+                    emptyRows[point.i].fill(point: point, value: value)
+                    emptyCols[point.j].fill(point: point, value: value)
+                    emptyGrids[point.i/3*3+point.j/3].fill(point: point, value: value)
                 }
                 if solveSudoku(&board) { return true }
                 // empty value
-                for j in 0..<p.count {
-                    board[points[j].i][points[j].j] = "."
-                    emptyRows[points[j].i].empty(point: points[j], originalValue: valuesToFill[j])
-                    emptyCols[points[j].j].empty(point: points[j], originalValue: valuesToFill[j])
-                    emptyGrids[points[j].i/3*3+points[j].j/3].empty(point: points[j], originalValue: valuesToFill[j])
+                for (point, value) in zip(points, valuesToFill) {
+                    board[point.i][point.j] = "."
+                    emptyRows[point.i].empty(point: point, originalValue: value)
+                    emptyCols[point.j].empty(point: point, originalValue: value)
+                    emptyGrids[point.i/3*3+point.j/3].empty(point: point, originalValue: value)
                 }
             }
             return false
