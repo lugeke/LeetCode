@@ -8,27 +8,17 @@
 import Foundation
 
 func nextPermutation(_ nums: inout [Int]) {
-    
-    // find the last index i where nums[i] < nums[i + 1]
-    if let i = (0..<nums.count-1).lastIndex(where: { nums[$0] < nums[$0+1] }) {
-        // find the last index j where nums[j] > nums[i]
-        let j = (i+1..<nums.count).lastIndex(where: { nums[$0] > nums[i] })!
-        nums.swapAt(i, j)
-        nums[(i+1)...].reverse()
-    } else {
-        nums.reverse()
-    }
+    nums.permutate()
 }
 
-
-extension Array where Element: Comparable {
-    mutating func nextPermutations() {
-        // find the last index i where nums[i] < nums[i + 1]
-        if let i = (0..<count-1).lastIndex(where: { self[$0] < self[$0+1] }) {
-            // find the last index j where nums[j] > nums[i]
-            let j = (i+1..<count).lastIndex(where: { self[$0] > self[i] })!
+extension MutableCollection where Self: BidirectionalCollection, Element: Comparable {
+    mutating func permutate() {
+        // find the last index i where self[i] < self[i + 1]
+        if let i = indices.dropLast().last(where: { self[$0] < self[index(after: $0)] }) {
+            // find the last index j where self[j] > self[i]
+            let j = self[index(after: i)...].indices.last(where: { self[$0] > self[i] })!
             swapAt(i, j)
-            self[(i+1)...].reverse()
+            self[index(after: i)...].reverse()
         } else {
             reverse()
         }

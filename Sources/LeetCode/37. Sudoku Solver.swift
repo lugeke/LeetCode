@@ -101,7 +101,7 @@ func solveSudoku(_ board: inout [[Character]]) {
             var valuesToFill = Array(p.valuesToFill)
             let points = p.emptyPoints
             outer: for _ in 1...p.count.factorial {
-                valuesToFill.nextPermutations()
+                valuesToFill.permutate()
                 for (point, value) in zip(points, valuesToFill) {
                     if !isValid(point.i, j: point.j, val: value) {
                         continue outer
