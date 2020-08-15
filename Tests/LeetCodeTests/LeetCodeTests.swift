@@ -162,6 +162,28 @@ final class LeetCodeTests: XCTestCase {
         
     }
     
+    func test38() {
+        XCTAssertEqual(countAndSay(1), "1")
+        XCTAssertEqual(countAndSay(2), "11")
+        XCTAssertEqual(countAndSay(3), "21")
+        XCTAssertEqual(countAndSay(4), "1211")
+        XCTAssertEqual(countAndSay(5), "111221")
+    }
+    
+    func test39() {
+        XCTAssertEqual(Set(combinationSum([2,3,6,7], 7)), [[7], [2, 2, 3]])
+        XCTAssertEqual(Set(combinationSum([2,3,5], 8)), [[3, 5], [2, 2, 2, 2], [2, 3, 3]])
+        XCTAssertEqual(Set(combinationSum([2], 1)), [])
+    }
+    
+    func test40() {
+        XCTAssertEqual(Set(combinationSum2([10,1,2,7,6,1,5], 8)),
+                       [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]])
+        XCTAssertEqual(Set(combinationSum2([2,5,2,1,2], 5)),
+            [[1,2,2],[5]])
+        
+    }
+    
     func test189() {
         var a = [1,2,3,4,5,6,7]
         rotate(&a, 3)
