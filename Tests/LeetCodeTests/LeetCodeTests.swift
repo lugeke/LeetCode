@@ -122,7 +122,7 @@ final class LeetCodeTests: XCTestCase {
             [".","6",".",".",".",".","2","8","."],
             [".",".",".","4","1","9",".",".","5"],
             [".",".",".",".","8",".",".","7","9"]
-          ]))
+        ]))
         
         XCTAssertFalse(isValidSudoku([
             ["8","3",".",".","7",".",".",".","."],
@@ -134,7 +134,7 @@ final class LeetCodeTests: XCTestCase {
             [".","6",".",".",".",".","2","8","."],
             [".",".",".","4","1","9",".",".","5"],
             [".",".",".",".","8",".",".","7","9"]
-          ]))
+        ]))
     }
     
     
@@ -180,8 +180,83 @@ final class LeetCodeTests: XCTestCase {
         XCTAssertEqual(Set(combinationSum2([10,1,2,7,6,1,5], 8)),
                        [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]])
         XCTAssertEqual(Set(combinationSum2([2,5,2,1,2], 5)),
-            [[1,2,2],[5]])
+                       [[1,2,2],[5]])
         
+    }
+    
+    func test42() {
+        XCTAssertEqual(trap([0,1,0,2,1,0,1,3,2,1,2,1]), 6)
+        XCTAssertEqual(trap([]), 0)
+    }
+    
+    func test45() {
+//        XCTAssertEqual(jump([2,3,1,1,4]), 2)
+//        XCTAssertEqual(jump([2,0,2,0,1]), 2)
+//        XCTAssertEqual(jump([7,0,9,6,9,6,1,7,9,0,1,2,9,0,3]), 2)
+        XCTAssertEqual(jump([1,1,1,1]), 3)
+    }
+    
+    func test46() {
+        XCTAssertEqual(Set(permute([1,2,3])), [
+            [1,2,3],
+            [1,3,2],
+            [2,1,3],
+            [2,3,1],
+            [3,1,2],
+            [3,2,1]
+        ])
+        XCTAssertEqual(permute([]), [[]])
+    }
+    
+    func test47() {
+        XCTAssertEqual((permuteUnique([1,1,2])), [
+            [1,1,2],
+            [1,2,1],
+            [2,1,1]
+        ])
+        XCTAssertEqual(permuteUnique([]), [[]])
+        XCTAssertEqual(permuteUnique([1,1,1]), [[1,1,1]])
+        XCTAssertEqual(permuteUnique([2,2,1,1]), [[1,1,2,2],[1,2,1,2],[1,2,2,1],[2,1,1,2],[2,1,2,1],[2,2,1,1]])
+    }
+    
+    func test48() {
+        var matrix = [
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ]
+        rotate(&matrix)
+        XCTAssertEqual(matrix, [
+            [7,4,1],
+            [8,5,2],
+            [9,6,3]
+        ])
+        
+        matrix = [
+            [ 5, 1, 9,11],
+            [ 2, 4, 8,10],
+            [13, 3, 6, 7],
+            [15,14,12,16]
+        ]
+        rotate(&matrix)
+        XCTAssertEqual(matrix,[
+            [15,13, 2, 5],
+            [14, 3, 4, 1],
+            [12, 6, 8, 9],
+            [16, 7,10,11]
+        ])
+    }
+    
+    func test50() {
+        XCTAssertEqual(myPow(2.00000, 10), 1024.00000)
+        XCTAssertEqual(myPow(2.10000, 3), 9.26100, accuracy: 0.001)
+        
+        
+        XCTAssertEqual(myPow(2.00000, -2), 0.25000)
+    }
+    
+    func test53() {
+        XCTAssertEqual(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]), 6)
     }
     
     func test189() {
