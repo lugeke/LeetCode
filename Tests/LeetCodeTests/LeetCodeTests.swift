@@ -259,6 +259,31 @@ final class LeetCodeTests: XCTestCase {
         XCTAssertEqual(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]), 6)
     }
     
+    func test66() {
+        XCTAssertEqual(plusOne([1,2,3]), [1,2,4])
+        XCTAssertEqual(plusOne([4,3,2,1]), [4,3,2,2])
+        XCTAssertEqual(plusOne([0]), [1])
+        XCTAssertEqual(plusOne([9]), [1,0]) 
+    }
+    
+    func test67() {
+        XCTAssertEqual(addBinary("11", "1"), "100")
+        XCTAssertEqual(addBinary("1010", "1011"), "10101")
+    }
+    
+    func test69() {
+        XCTAssertEqual(mySqrt3(4), 2)
+        XCTAssertEqual(mySqrt3(8), 2)
+        XCTAssertEqual(mySqrt3(1), 1)
+        XCTAssertEqual(mySqrt3(0), 0)
+    }
+    
+    func test70() {
+        XCTAssertEqual(climbStairs(2), 2)
+        XCTAssertEqual(climbStairs(3), 3)
+        XCTAssertEqual(climbStairs(4), 5)
+    }
+    
     func test189() {
         var a = [1,2,3,4,5,6,7]
         rotate(&a, 3)
