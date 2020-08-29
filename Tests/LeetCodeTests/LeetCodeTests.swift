@@ -284,6 +284,98 @@ final class LeetCodeTests: XCTestCase {
         XCTAssertEqual(climbStairs(4), 5)
     }
     
+    func test88() {
+        var nums1 = [1,2,3,0,0,0]
+        merge(&nums1, 3, [2,5,6], 3)
+        XCTAssertEqual(nums1, [1,2,2,3,5,6])
+        
+        nums1 = [1,2,3,0,0,0,0]
+        merge(&nums1, 3, [0,2,5,6], 4)
+        XCTAssertEqual(nums1, [0,1,2,2,3,5,6])
+    }
+    
+    func test100() {
+        var p = TreeNode(1, .init(2), .init(3))
+        var q = TreeNode(1, .init(2), .init(3))
+        
+        XCTAssertTrue(isSameTree(p, q))
+        
+        p = TreeNode(1, .init(2), nil)
+        q = TreeNode(1, nil, .init(2))
+        XCTAssertFalse(isSameTree(p, q))
+    }
+    
+    func test101() {
+        var tree = TreeNode(1, .init(2, .init(3), .init(4)), .init(2, .init(4), .init(3)))
+        XCTAssertTrue(isSymmetric(tree))
+        
+        tree = TreeNode(1, .init(2, nil, .init(3)), .init(2, nil, .init(3)))
+        XCTAssertFalse(isSymmetric(tree))
+        
+        XCTAssertTrue(isSymmetric(nil))
+    }
+    
+    func test107() {
+        let tree = TreeNode(3, .init(9), .init(20, .init(15), .init(7)))
+        XCTAssertEqual(levelOrderBottom(tree), [
+            [15,7],
+            [9,20],
+            [3]
+          ])
+        
+       
+    }
+    
+    func test110() {
+        var tree = TreeNode(3, .init(9), .init(20, .init(15), .init(7)))
+        XCTAssertTrue(isBalanced(tree))
+        
+        tree = TreeNode(1, .init(2, .init(3, .init(4), .init(4)), .init(3)), .init(2))
+        XCTAssertFalse(isBalanced(tree))
+    }
+    
+    func test111() {
+        var tree = TreeNode(3, .init(9), .init(20, .init(15), .init(7)))
+        XCTAssertEqual(minDepth(tree), 2)
+        
+        XCTAssertEqual(minDepth(nil), 0)
+        
+        tree = TreeNode(10)
+        XCTAssertEqual(minDepth(tree), 1)
+    }
+    
+    func test118() {
+        XCTAssertEqual(generate(5), [
+            [1],
+           [1,1],
+          [1,2,1],
+         [1,3,3,1],
+        [1,4,6,4,1]
+       ])
+        
+        XCTAssertEqual(generate(0), [])
+        
+        XCTAssertEqual(generate(1), [
+            [1],
+       ])
+    }
+    
+    func test121() {
+        XCTAssertEqual(maxProfit([7,1,5,3,6,4]), 5)
+        XCTAssertEqual(maxProfit([7,6,4,3,1]), 0)
+    }
+    
+    func test125() {
+        XCTAssertTrue(isPalindrome("A man, a plan, a canal: Panama"))
+        XCTAssertFalse(isPalindrome("race a car"))
+        XCTAssertTrue(isPalindrome(""))
+    }
+    
+    func test136() {
+        XCTAssertEqual(singleNumber([2,2,1]), 1)
+        XCTAssertEqual(singleNumber([4,1,2,1,2]), 4)
+    }
+    
     func test189() {
         var a = [1,2,3,4,5,6,7]
         rotate(&a, 3)
@@ -292,6 +384,20 @@ final class LeetCodeTests: XCTestCase {
         a = [-1,-100,3,99]
         rotate(&a, 2)
         XCTAssertEqual(a, [3,99,-1,-100])
+    }
+    
+    func test141() {
+        var list = ListNode(1)
+        XCTAssertFalse(hasCycle(list))
+        
+        let n2 = ListNode(2, list)
+        list.next = n2
+        XCTAssertTrue(hasCycle(list))
+        
+        let n4 = ListNode(-4)
+        n4.next = list
+        list = ListNode(3, .init(2, .init(0, n4)))
+        XCTAssertTrue(hasCycle(list))
     }
     
     func test796() {
