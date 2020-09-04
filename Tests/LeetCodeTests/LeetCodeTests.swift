@@ -400,6 +400,49 @@ final class LeetCodeTests: XCTestCase {
         XCTAssertTrue(hasCycle(list))
     }
     
+    func test169() {
+        XCTAssertEqual(majorityElement([3,2,3]), 3)
+        XCTAssertEqual(majorityElement([2,2,1,1,1,2,2]), 2)
+    }
+    
+    func test171() {
+        XCTAssertEqual(titleToNumber("A"), 1)
+        XCTAssertEqual(titleToNumber("AB"), 28)
+        XCTAssertEqual(titleToNumber("ZY"), 701)
+    }
+    
+    func test172() {
+        XCTAssertEqual(trailingZeroes(3), 0)
+        XCTAssertEqual(trailingZeroes(5), 1)
+    }
+    
+    func test198() {
+        XCTAssertEqual(rob([1,2,3,1]), 4)
+        XCTAssertEqual(rob([2,7,9,3,1]), 12)
+        XCTAssertEqual(rob([]), 0)
+        XCTAssertEqual(rob([1]), 1)
+        XCTAssertEqual(rob([2,1]), 2)
+    }
+    
+    func test204() {
+        XCTAssertEqual(countPrimes(10), 4)
+        XCTAssertEqual(countPrimes(11), 4)
+        XCTAssertEqual(countPrimes(1), 0)
+        XCTAssertEqual(countPrimes(2), 0)
+    }
+    
+    func test217() {
+        XCTAssertTrue(containsDuplicate([1,2,3,1]))
+        XCTAssertFalse(containsDuplicate([1,2,3,4]))
+        XCTAssertTrue(containsDuplicate([1,1,1,3,3,4,3,2,4,2]))
+    }
+    
+    func test226() {
+        XCTAssertEqual(invertTree(TreeNode(ary: [4,2,7,1,3,6,9])!),
+                       TreeNode(ary: [4,7,2,9,6,3,1])!)
+        XCTAssertNil(invertTree(nil))
+    }
+    
     func test796() {
         XCTAssertTrue(rotateString("abcde", "abcde"))
         XCTAssertFalse(rotateString("abcde", "abced"))

@@ -26,7 +26,7 @@ func isSymmetric(_ root: TreeNode?) -> Bool {
     var ary = [root]
     var start = 0
     while start < ary.endIndex {
-        guard ary[start...].isSymmetric else { return false }
+        guard ary[start...].isSymmetric(by: {$0?.val == $1?.val}) else { return false }
         
         let end = ary.endIndex
         for case let node? in ary[start...] {
@@ -36,26 +36,4 @@ func isSymmetric(_ root: TreeNode?) -> Bool {
         start = end
     }
     return true
-}
-
-extension BidirectionalCollection where Element: Equatable {
-    ///- Complexity: O(*n*) , where *n* is the number of elements in `Self`
-    var isSymmetric: Bool {
-        guard !isEmpty else {
-            return true
-        }
-        var i = startIndex, j = index(before: endIndex)
-        while i < j {
-            if self[i] != self [j] { return false }
-            formIndex(after: &i)
-            formIndex(before: &j)
-        }
-        return true
-    }
-}
-
-extension TreeNode: Equatable {
-    public static func == (lhs: TreeNode, rhs: TreeNode) -> Bool {
-        return lhs.val == rhs.val
-    }
 }
