@@ -443,6 +443,36 @@ final class LeetCodeTests: XCTestCase {
         XCTAssertNil(invertTree(nil))
     }
     
+    func test231() {
+        XCTAssertTrue(isPowerOfTwo(1))
+        XCTAssertTrue(isPowerOfTwo(16))
+        XCTAssertFalse(isPowerOfTwo(0))
+        XCTAssertFalse(isPowerOfTwo(6))
+    }
+    
+    func test235() {
+        let root = TreeNode(ary: [6,2,8,0,4,7,9,nil,nil,3,5])!
+        var lca = lowestCommonAncestorBST(root, root.left, root.right)
+        XCTAssertEqual(lca?.val, root.val)
+        
+        lca = lowestCommonAncestorBST(root, root.left, root.left?.right)
+        XCTAssertEqual(lca?.val, root.left?.val)
+    }
+    
+    func test236() {
+        let root = TreeNode(ary: [3,5,1,6,2,0,8,nil,nil,7,4])!
+        var lca = lowestCommonAncestor(root, root.left, root.right)
+        XCTAssertEqual(lca?.val, root.val)
+        
+        lca = lowestCommonAncestor(root, root.left, root.left?.right?.right)
+        XCTAssertEqual(lca?.val, root.left?.val)
+    }
+    
+    func test242() {
+        XCTAssertTrue(isAnagram("anagram", "nagaram"))
+        XCTAssertFalse(isAnagram("rat", "car"))
+    }
+    
     func test796() {
         XCTAssertTrue(rotateString("abcde", "abcde"))
         XCTAssertFalse(rotateString("abcde", "abced"))
