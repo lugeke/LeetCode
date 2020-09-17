@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension BidirectionalCollection {//where Element: Equatable {
+extension BidirectionalCollection {
     ///- Complexity: O(*n*) , where *n* is the number of elements in `Self`
     func isSymmetric(by isEqual: (Element, Element) throws -> Bool) rethrows -> Bool {
         guard !isEmpty else {
@@ -15,7 +15,7 @@ extension BidirectionalCollection {//where Element: Equatable {
         }
         var i = startIndex, j = index(before: endIndex)
         while i < j {
-            if try !isEqual(self[i], self[j]) { return false }
+            guard try isEqual(self[i], self[j]) else { return false }
             formIndex(after: &i)
             formIndex(before: &j)
         }

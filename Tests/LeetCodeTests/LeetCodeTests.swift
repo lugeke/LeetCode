@@ -473,6 +473,25 @@ final class LeetCodeTests: XCTestCase {
         XCTAssertFalse(isAnagram("rat", "car"))
     }
     
+    func test258() {
+        XCTAssertEqual(addDigits(38), 2)
+        XCTAssertEqual(addDigits(0), 0)
+        XCTAssertEqual(addDigits(123), 6)
+    }
+    
+    func test263() {
+        XCTAssertTrue(isUgly(6))
+        XCTAssertTrue(isUgly(8))
+        XCTAssertTrue(isUgly(1))
+        XCTAssertFalse(isUgly(14))
+        XCTAssertFalse(isUgly(0))
+    }
+    
+    func test264() {
+        XCTAssertEqual(nthUglyNumber(1), 1)
+        XCTAssertEqual(nthUglyNumber(10), 12)
+    }
+    
     func test796() {
         XCTAssertTrue(rotateString("abcde", "abcde"))
         XCTAssertFalse(rotateString("abcde", "abced"))
